@@ -1,4 +1,4 @@
-This is my attempt at the Rock Paper Scissors assignment that The Odin Project (https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
+This is my attempt at the Rock Paper Scissors assignment that The Odin Project (https://www.theodinproject.com/lessons/foundations-rock-paper-scissors) assigns as part of its learning curriculum.
 
 To run, somply run "web.html" in your browser. 
 
