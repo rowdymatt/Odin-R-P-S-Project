@@ -1,12 +1,13 @@
 console.log("game.js is working!");
-
+//RNG for Computer's Choice
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-
+//Gets Computer's choice by calling RNG function
 function getComputerChoice() {
   let randNum = getRandomInt(3);
   let comChoice = -1;
+
   switch(randNum) {
     case 0:
       comChoice = "rock";
@@ -18,28 +19,24 @@ function getComputerChoice() {
       comChoice = "scissors";
       break;
   }
-  //for debugging
-  if(comChoice === -1) {
-    console.log("randNum is TROLLING bro!");
-  }
 
   return comChoice;
 }
-
+//Gets the player's choice, converts toLower to prevent case sensitive errors, and performs basic input checking
 function getPlayerChoice() {
   let playerInput = prompt("Welcome to Rock, Paper, Scissors!\nThis is a best of 5 game. (First to 3)\nWhat will you play?")
-  console.log(playerInput);
   playerInput = playerInput.toLowerCase();
-  console.log(playerInput);
+  
   
   while(playerInput !== "rock" && playerInput !== "paper" && playerInput !== "scissors") {
     playerInput = prompt("Invalid selection. Please enter \"rock\", \"paper\", or \"scissors\".")
-    console.log(playerInput);
     playerInput = playerInput.toLowerCase();
   }
+  console.log("You Chose: " + playerInput);
+
   return playerInput;
 }
-
+//Compares the player's choice to the computer's choice and returns the winner as a string
 function playRound(playerSelection, computerSelection) {
   
   let result = 0;
@@ -86,7 +83,7 @@ function playRound(playerSelection, computerSelection) {
       }
   }
 }
-
+//runs the game and calls every other function. Basically a "main"
 function game() {
   let computerSelection;
   let playerSelection;
@@ -102,16 +99,17 @@ function game() {
     playerSelection = getPlayerChoice();
     roundPlayed = playRound(playerSelection, computerSelection);
 
-    console.log(roundPlayed);//debugging
+    console.log(roundPlayed);
 
-    alert(roundPlayed)
+    alert(roundPlayed);
 
+    //This block checks the winner by checcking the 3rd to last character in the result strings, then increments whoever won unless it's a tie.
     let strLen = roundPlayed.length;
     strLen -= 3;
-    winChecker = roundPlayed[strLen]
+    winChecker = roundPlayed[strLen];
     switch(winChecker){
       case 'I':
-        playerWins += 1
+        playerWins += 1;
         break;
       case 'S':
         comWins += 1;
@@ -124,7 +122,7 @@ function game() {
     console.log("Computer's Wins: " + comWins);
     alert("Your Wins: " + playerWins + "\nComputer's Wins: " + comWins);
   }
-
+//win messages
   if(playerWins === 3) {
     console.log("YOU WIN THE GAME!");
     alert("YOU WIN THE GAME!");
@@ -134,5 +132,5 @@ function game() {
     alert("THE COMPUTER WINS THE GAME!");
   }
 }
-  
+//Starts the game
 game();  
